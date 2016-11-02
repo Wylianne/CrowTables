@@ -16,6 +16,11 @@ import java.sql.*;
 public class AcessoCliente extends Conexao{
     private int id;
     private String nome;
+    private String cpf ;           
+    private String identidade;
+    private String dataNascimento;
+    private String escolaridade;
+    private String endereco;
     private String telefone;
     private ResultSet resultado;
     
@@ -35,12 +40,25 @@ public class AcessoCliente extends Conexao{
         }
     }
     
+    
+    public ResultSet Lista(String filter)throws Exception{
+        try{
+        
+            getStmt();
+            resultado = stmt.executeQuery("SELECT id,"+filter+" FROM cliente");
+            return resultado;
+        }catch (Exception ex){
+            System.out.println("SQLException: "+ ex.getMessage());
+            return null;
+        }
+    }
+    
     //BUSCA POR ID
     public ResultSet BuscaExistente(int Codigo) throws Exception{
 
         try{
             getStmt();
-            resultado = stmt.executeQuery("SELECT * FROM CLIENTE WHERE ID="+Codigo);
+            resultado = stmt.executeQuery("SELECT * FROM cliente WHERE ID="+Codigo);
             return resultado;
         }catch (Exception ex){
             System.out.println("SQLException: "+ex.getMessage());
