@@ -109,7 +109,7 @@ public class SimpleTable extends SimpleTagSupport{
                         table_b = table_b+"</tr>";
                         
                 } catch (Exception ex) {
-                    Logger.getLogger(SimpleContentTable.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(SimpleTable.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             
