@@ -5,7 +5,7 @@
  */
 package tags;
 
-import AcessoDados.AcessoDados;
+import AcessoDados.AcessoCliente;
 import com.mysql.jdbc.ResultSetMetaData;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -64,7 +64,7 @@ public class SimpleTable extends SimpleTagSupport{
                         t_body[7][1] = "Telefone";
                         
                         ResultSet res;
-                        AcessoDados cliente = new AcessoDados();
+                        AcessoCliente cliente = new AcessoCliente();
                         if (presentedOnTable!=null){
                             //retorna somente o que esta presente em presentOnTable e id.
                             String filter = presentedOnTable.replace(';', ',');
