@@ -14,25 +14,31 @@ import java.sql.*;
  * @author Wylianne
  */
 public class AcessoCliente extends Conexao{
-    private int id;
-    private String nome;
-    private String cpf ;           
-    private String identidade;
-    private String dataNascimento;
-    private String escolaridade;
-    private String endereco;
-    private String telefone;
     private ResultSet resultado;
     
     public AcessoCliente(){
         Conectar();
     }
-    //BUSCA POR TODOS
-    public ResultSet Lista()throws Exception{
+ 
+
+    
+    //Modal
+    public ResultSet Modal()throws Exception{
         try{
-        
             getStmt();
             resultado = stmt.executeQuery("SELECT * FROM cliente");
+            return resultado;
+        }catch (Exception ex){
+            System.out.println("SQLException: "+ ex.getMessage());
+            return null;
+        }
+    }
+    //BUSCA POR TODOS
+    
+    public ResultSet Lista()throws Exception{
+        try{
+            getStmt();
+            resultado = stmt.executeQuery("SELECT cpf, nome, identidade,dataNascimento, escolaridade, endereco, telefone FROM cliente");
             return resultado;
         }catch (Exception ex){
             System.out.println("SQLException: "+ ex.getMessage());
@@ -45,7 +51,7 @@ public class AcessoCliente extends Conexao{
         try{
         
             getStmt();
-            resultado = stmt.executeQuery("SELECT id,"+filter+" FROM cliente");
+            resultado = stmt.executeQuery("SELECT "+filter+", id FROM cliente");
             return resultado;
         }catch (Exception ex){
             System.out.println("SQLException: "+ ex.getMessage());
